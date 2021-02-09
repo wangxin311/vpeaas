@@ -55,16 +55,16 @@ def startProvision():
     provision(vpe_veos_r6, "config/1.create_vpe_tenant_a_vpe_veos_r6.cfg")
     provision(vpe_vmx_r7, "config/1.create_vpe_tenant_a_vpe_vmx_r7.cfg")
     provision(vpe_vmx_r12, "config/1.create_vpe_tenant_a_vpe_vmx_r12.cfg")
-    # input("VPE Provision for TENANT-A is completed, Press ENTER continue to Create Subnets for TENANT-A...")
+    input("VPE Provision for TENANT-A is completed, Press ENTER continue to Create Subnets and attach VM for TENANT-A...")
 
-    # Create Subnets for TENANT-A
+    # Create Subnets for TENANT-A and attach VM into Subnet
     print("=" * 128)
-    print('{:^128}'.format('[ Start Provision Subnets for TENANT-A ]'))
+    print('{:^128}'.format('[ Start Provision Subnets and attach VM into subnets for TENANT-A ]'))
     print("=" * 128)
     provision(vpe_veos_r1, "config/2.create_subnet_tenant_a_vpe_veos_r1.cfg")
     provision(vpe_veos_r2, "config/2.create_subnet_tenant_a_vpe_veos_r2.cfg")
     provision(vpe_veos_r6, "config/2.create_subnet_tenant_a_vpe_veos_r6.cfg")
-    # input("Subnets Provision for TENANT-A is completed, Press ENTER continue to Create Peering Gateway for TENANT-A...")
+    input("Subnets Provision and VM attachment for TENANT-A is completed, Press ENTER continue to Create Peering Gateway for TENANT-A...")
 
     # Create Peering Gateway for TENANT-A
     print("=" * 128)
@@ -72,7 +72,7 @@ def startProvision():
     print("=" * 128)
     provision(vpe_vmx_r11, "config/3.create_peering_gateway_tenant_a_vpe_vmx_r11.cfg")
     provision(vpe_vmx_r17, "config/3.create_peering_gateway_tenant_a_vpe_vmx_r17.cfg")
-    # input("Peering Gateway Provision for TENANT-A is completed, Press ENTER continue to Attach Peering Gateway to VPE Router for TENANT-A...")
+    input("Peering Gateway Provision for TENANT-A is completed, Press ENTER continue to Attach Peering Gateway to VPE Router for TENANT-A...")
 
     # Attach Peering Gateway to VPE Router for TENANT-A
     print("=" * 128)
@@ -82,7 +82,7 @@ def startProvision():
     provision(vpe_vmx_r12, "config/3.attach_peering_gateway_tenant_a_vpe_vmx_r12.cfg")
     provision(vpe_vmx_r11, "config/3.attach_peering_gateway_tenant_a_vpe_vmx_r11.cfg")
     provision(vpe_vmx_r17, "config/3.attach_peering_gateway_tenant_a_vpe_vmx_r17.cfg")
-    # input("Attach Peering Gateway to VPE Router for TENANT-A is completed, Press ENTER continue to Create IGW and attach to VPE Router for TENANT-A Public BM...")
+    input("Attach Peering Gateway to VPE Router for TENANT-A is completed, Press ENTER continue to Create IGW and attach to VPE Router for TENANT-A Public BM...")
 
     # Create IGW and attach to VPE Router for TENANT-A Public BM
     print("=" * 128)
@@ -90,7 +90,7 @@ def startProvision():
     print("=" * 128)
     provision(vpe_vsrx_r9, "config/4.create_attach_internet_gateway_tenant_a_vpe_vsrx_r9.cfg")
     provision(vpe_vmx_r7, "config/4.create_attach_internet_gateway_tenant_a_vpe_vmx_r7.cfg")
-    # input("Create IGW and attach it to VPE Router for TENANT-A Public BM is completed, Press ENTER continue to Create NAT GW and attach to VPE Router for TENANT-A...")
+    input("Create IGW and attach it to VPE Router for TENANT-A Public BM is completed, Press ENTER continue to Create NAT GW and attach to VPE Router for TENANT-A...")
 
 
     # Create NAT GW and attach to VPE Router for TENANT-A
@@ -98,7 +98,7 @@ def startProvision():
     print('{:^128}'.format('[ Start Provision NAT GW and attach it to VPE Router for TENANT-A Private BM (vpe-vm2 and vpe-vm3) ]'))
     print("=" * 128)
     provision(vpe_vsrx_r9, "config/5.create_attach_nat_gateway_tenant_a_vpe_vsrx_r9.cfg")
-    # input("Create NAT GW and attach it to VPE Router for TENANT-A Private BM is completed, Press ENTER continue to Create VGW for TENANT-A...")
+    input("Create NAT GW and attach it to VPE Router for TENANT-A Private BM is completed, Press ENTER continue to Create VGW for TENANT-A...")
 
 
     # Create VGW for TENANT-A
@@ -106,7 +106,7 @@ def startProvision():
     print('{:^128}'.format('[ Start Provision VGW for TENANT-A ]'))
     print("=" * 128)
     provision(vpe_vsrx_r8, "config/6.create_vpn_gateway_tenant_a_vpe_vsrx_r8.cfg")
-    # input("Create VGW for TENANT-A Private BM is completed, Press ENTER continue to Attach VGW to VPE Router for TENANT-A...")
+    input("Create VGW for TENANT-A Private BM is completed, Press ENTER continue to Attach VGW to VPE Router for TENANT-A...")
 
     # Attach VGW to VPE Router for TENANT-A
     print("=" * 128)
@@ -114,7 +114,7 @@ def startProvision():
     print("=" * 128)
     provision(vpe_vsrx_r8, "config/6.attach_vpn_gateway_tenant_a_vpe_vsrx_r8.cfg")
     provision(vpe_vmx_r7, "config/6.attach_vpn_gateway_tenant_a_vpe_vmx_r7.cfg")
-    # input("Attach VGW to VPE Router for TENANT-A is completed, Press ENTER continue to Create EGW for TENANT-A...")
+    input("Attach VGW to VPE Router for TENANT-A is completed, Press ENTER continue to Create EGW for TENANT-A...")
 
 
     # Create EGW for TENANT-A
@@ -122,7 +122,7 @@ def startProvision():
     print('{:^128}'.format('[ Start Provision EGW for TENANT-A ]'))
     print("=" * 128)
     provision(vpe_vsrx_r10, "config/7.create_endpoint_gateway_tenant_a_vpe_vsrx_r10.cfg")
-    # input("Create EGW for TENANT-A is completed, Press ENTER continue to Attach EGW to VPE Router for TENANT-A...")
+    input("Create EGW for TENANT-A is completed, Press ENTER continue to Attach EGW to VPE Router for TENANT-A...")
 
     # Attach EGW to VPE Router for TENANT-A
     print("=" * 128)
@@ -130,40 +130,40 @@ def startProvision():
     print("=" * 128)
     provision(vpe_vsrx_r10, "config/7.attach_endpoint_gateway_tenant_a_vpe_vsrx_r10.cfg")
     provision(vpe_vmx_r7, "config/7.attach_endpoint_gateway_tenant_a_vpe_vmx_r7.cfg")
-    # input("Attach VGW to VPE Router for TENANT-A is completed, Press ENTER continue to Create LB for TENANT-A...")
+    input("Attach VGW to VPE Router for TENANT-A is completed, Press ENTER continue to Create LB for TENANT-A...")
 
     # Create LB for TENANT-A
     print("=" * 128)
     print('{:^128}'.format('[ Load Balancer is pre-provsioned for TENANT-A, skip it ]'))
     print("=" * 128)
-    # input("Create LB for TENANT-A is skipped, Press ENTER continue to attach LB to VPE Router for TENANT-A...")
+    input("Create LB for TENANT-A is skipped, Press ENTER continue to attach LB to VPE Router for TENANT-A...")
 
     # Attach LB to VPE Router for TENANT-A
     print("=" * 128)
     print('{:^128}'.format('[ Start Attach LB to VPE Router for TENANT-A ]'))
     print("=" * 128)
     provision(vpe_vmx_r7, "config/8.attach_load_balancer_tenant_a_vpe_vmx_r7.cfg")
-    # input("Attach LB to VPE Router for TENANT-A is completed, Press ENTER continue to Create Network Edge for TENANT-A...")
+    input("Attach LB to VPE Router for TENANT-A is completed, Press ENTER continue to Create Network Edge for TENANT-A...")
 
     # Create Network Edge for TENANT-A
     print("=" * 128)
     print('{:^128}'.format('[ Network Edge is created in Fabric portal and owned by Customer, so no need to create it, skip creation ]'))
     print("=" * 128)
-    # input("Network Edge for TENANT-A creation is skipped, Press ENTER continue to attach Network Edge to VPE Router for TENANT-A...")
+    input("Network Edge for TENANT-A creation is skipped, Press ENTER continue to attach Network Edge to VPE Router for TENANT-A...")
 
     # Attach Network Edge to VPE Router for TENANT-A
     print("=" * 128)
     print('{:^128}'.format('[ Attach Network Edge to VPE Router for TENANT-A ]'))
     print("=" * 128)
     provision(vpe_vmx_r12, "config/9.attach_network_edge_tenant_a_vpe_vmx_r12.cfg")
-    # input("Attach Network Edge to VPE Router for TENANT-A is completed, Press ENTER continue to Create Cloud GW for TENANT-A...")
+    input("Attach Network Edge to VPE Router for TENANT-A is completed, Press ENTER continue to Create Cloud GW for TENANT-A...")
 
     # Create Cloud GW for TENANT-A
     print("=" * 128)
     print('{:^128}'.format('[ Start Provision Cloud GW for TENANT-A ]'))
     print("=" * 128)
     provision(vpe_veos_r20, "config/10.create_cloud_gateway_tenant_a_vpe_veos_r20.cfg")
-    # input("Create Cloud GW for TENANT-A is completed, Press ENTER continue to Attach Cloud GW to VPE Router for TENANT-A...")
+    input("Create Cloud GW for TENANT-A is completed, Press ENTER continue to Attach Cloud GW to VPE Router for TENANT-A...")
 
     # Attach Cloud GW to VPE Router for TENANT-A
     print("=" * 128)
@@ -171,7 +171,7 @@ def startProvision():
     print("=" * 128)
     provision(vpe_veos_r20, "config/10.attach_cloud_gateway_tenant_a_vpe_veos_r20.cfg")
     provision(vpe_vmx_r12, "config/10.attach_cloud_gateway_tenant_a_vpe_vmx_r12.cfg")
-    # input("Attach Cloud GW to VPE Router for TENANT-A is completed, Press ENTER continue to for TENANT-B...")
+    input("Attach Cloud GW to VPE Router for TENANT-A is completed, Press ENTER continue to for TENANT-B...")
 
     # Create VPE for TENANT-B
     print("=" * 128)
@@ -179,14 +179,14 @@ def startProvision():
     print("=" * 128)
     provision(vpe_veos_r1, "config/1.create_vpe_tenant_b_vpe_veos_r1.cfg")
     provision(vpe_vmx_r7, "config/1.create_vpe_tenant_b_vpe_vmx_r7.cfg")
-    # input("VPE Provision for TENANT-B is completed, Press ENTER continue to...")
+    input("VPE Provision for TENANT-B is completed, Press ENTER continue to Create Subnets and attach VM...")
 
-    # Create Subnets for TENANT-B
+    # Create Subnets and Attach VM for TENANT-B
     print("=" * 128)
     print('{:^128}'.format('[ Start Provision Subnets for TENANT-B ]'))
     print("=" * 128)
     provision(vpe_veos_r1, "config/2.create_subnet_tenant_b_vpe_veos_r1.cfg")
-    # input("Subnets Provision for TENANT-B is completed, Press ENTER continue to...")
+    input("Subnets Provision and VM attachment for TENANT-B is completed, Press ENTER continue to Create IGW and attach to VPE Router...")
 
     # Create IGW and attach to VPE Router for TENANT-B Public BM
     print("=" * 128)
@@ -194,14 +194,14 @@ def startProvision():
     print("=" * 128)
     provision(vpe_vsrx_r9, "config/4.create_attach_internet_gateway_tenant_b_vpe_vsrx_r9.cfg")
     provision(vpe_vmx_r7, "config/4.create_attach_internet_gateway_tenant_b_vpe_vmx_r7.cfg")
-    # input("Create IGW and attach it to VPE Router for TENANT-B Public BM is completed, Press ENTER continue to Create NAT GW and attach to VPE Router for TENANT-A...")
+    input("Create IGW and attach it to VPE Router for TENANT-B Public BM is completed, Press ENTER continue to Create VGW and attach to VPE Router for TENANT-B...")
 
     # Create VGW for TENANT-B
     print("=" * 128)
     print('{:^128}'.format('[ Start Provision VGW for TENANT-B ]'))
     print("=" * 128)
     provision(vpe_vsrx_r8, "config/6.create_vpn_gateway_tenant_b_vpe_vsrx_r8.cfg")
-    # input("Create VGW for TENANT-B is completed, Press ENTER continue to Attach VGW to VPE Router for TENANT-B...")
+    input("Create VGW for TENANT-B is completed, Press ENTER continue to Attach VGW to VPE Router for TENANT-B...")
 
     # Attach VGW to VPE Router for TENANT-B
     print("=" * 128)
@@ -209,20 +209,20 @@ def startProvision():
     print("=" * 128)
     provision(vpe_vsrx_r8, "config/6.attach_vpn_gateway_tenant_b_vpe_vsrx_r8.cfg")
     provision(vpe_vmx_r7, "config/6.attach_vpn_gateway_tenant_b_vpe_vmx_r7.cfg")
-    # input("Attach VGW to VPE Router for TENANT-B is completed, Press ENTER continue to Create LB for TENANT-B...")
+    input("Attach VGW to VPE Router for TENANT-B is completed, Press ENTER continue to Create LB for TENANT-B...")
 
     # Create LB for TENANT-B
     print("=" * 128)
     print('{:^128}'.format('[ Load Balancer is pre-provisioned for TENANT-B, skip it ]'))
     print("=" * 128)
-    # input("Create LB for TENANT-B is skipped, Press ENTER continue to attach LB to VPE Router for TENANT-A...")
+    input("Create LB for TENANT-B is skipped, Press ENTER continue to attach LB to VPE Router for TENANT-A...")
 
     # Attach LB to VPE Router for TENANT-B
     print("=" * 128)
     print('{:^128}'.format('[ Start Attach LB to VPE Router for TENANT-B ]'))
     print("=" * 128)
     provision(vpe_vmx_r7, "config/8.attach_load_balancer_tenant_b_vpe_vmx_r7.cfg")
-    # input("Attach LB to VPE Router for TENANT-B is completed, Press ENTER to exit...")
+    input("Attach LB to VPE Router for TENANT-B is completed, All Steps are Done! Press ENTER to exit...")
 
 def resetToBase():
     # Reset to BASE configuration
@@ -261,7 +261,7 @@ def setToFinal():
     reset(vpe_vsrx_r9, "VPEaaS-FINAL-vSRX-R9-IGW-NGW-01252021-NATIVE.cfg")
     reset(vpe_vsrx_r10, "VPEaaS-FINAL-vSRX-R10-EGW-01252021-NATIVE.cfg")
     print("=" * 128)
-    print('{:^128}'.format('[ FINAL Configurations are pushed, ready for verification ]'))
+    print('{:^128}'.format('[ FINAL Configurations are pushed, Ready For Verification ]'))
     print("=" * 128)
 
 def main():
@@ -286,11 +286,8 @@ def main():
             setToFinal()
 
 
-
 if __name__ == "__main__":
     main()
-
-
 
     # devices = [vpe_veos_r1, vpe_veos_r2]
     # for device in devices:
