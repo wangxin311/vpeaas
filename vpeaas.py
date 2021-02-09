@@ -82,7 +82,7 @@ def startProvision():
     provision(vpe_vmx_r12, "config/3.attach_peering_gateway_tenant_a_vpe_vmx_r12.cfg")
     provision(vpe_vmx_r11, "config/3.attach_peering_gateway_tenant_a_vpe_vmx_r11.cfg")
     provision(vpe_vmx_r17, "config/3.attach_peering_gateway_tenant_a_vpe_vmx_r17.cfg")
-    input("Attach Peering Gateway to VPE Router for TENANT-A is completed, Press ENTER continue to Create IGW and attach to VPE Router for TENANT-A Public BM...")
+    input("Attach PGW to VPE Router for TENANT-A is completed, Press ENTER continue to Create IGW for TENANT-A Public BM...")
 
     # Create IGW and attach to VPE Router for TENANT-A Public BM
     print("=" * 128)
@@ -90,7 +90,7 @@ def startProvision():
     print("=" * 128)
     provision(vpe_vsrx_r9, "config/4.create_attach_internet_gateway_tenant_a_vpe_vsrx_r9.cfg")
     provision(vpe_vmx_r7, "config/4.create_attach_internet_gateway_tenant_a_vpe_vmx_r7.cfg")
-    input("Create IGW and attach it to VPE Router for TENANT-A Public BM is completed, Press ENTER continue to Create NAT GW and attach to VPE Router for TENANT-A...")
+    input("Create IGW and attach it to VPE Router for TENANT-A Public BM is completed, Press ENTER continue to Create NAT GW for TENANT-A...")
 
 
     # Create NAT GW and attach to VPE Router for TENANT-A
@@ -194,7 +194,7 @@ def startProvision():
     print("=" * 128)
     provision(vpe_vsrx_r9, "config/4.create_attach_internet_gateway_tenant_b_vpe_vsrx_r9.cfg")
     provision(vpe_vmx_r7, "config/4.create_attach_internet_gateway_tenant_b_vpe_vmx_r7.cfg")
-    input("Create IGW and attach it to VPE Router for TENANT-B Public BM is completed, Press ENTER continue to Create VGW and attach to VPE Router for TENANT-B...")
+    input("Create IGW and attach it to VPE Router for TENANT-B Public BM is completed, Press ENTER continue to Create VGW for TENANT-B...")
 
     # Create VGW for TENANT-B
     print("=" * 128)
@@ -213,9 +213,9 @@ def startProvision():
 
     # Create LB for TENANT-B
     print("=" * 128)
-    print('{:^128}'.format('[ Load Balancer is pre-provisioned for TENANT-B, skip it ]'))
+    print('{:^128}'.format('[ Load Balancer is pre-provisioned for TENANT-B, skip creation ]'))
     print("=" * 128)
-    input("Create LB for TENANT-B is skipped, Press ENTER continue to attach LB to VPE Router for TENANT-A...")
+    input("Create LB for TENANT-B is skipped, Press ENTER continue to attach LB to VPE Router for TENANT-B...")
 
     # Attach LB to VPE Router for TENANT-B
     print("=" * 128)
