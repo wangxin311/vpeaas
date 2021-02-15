@@ -1,10 +1,11 @@
 #! /usr/bin/env python3
 
 import sys
+import argparse
 from datetime import datetime
 from netmiko import ConnectHandler
 from device import *
-from optparse import OptionParser
+
 
 def provision(device, config_file):
     start_time=datetime.now()
@@ -256,24 +257,25 @@ def setToFinal():
     print("=" * 128)
 
 def parse_args(argv):
-    parser = OptionParser()
-    parser.add_option('-p', '--provision', action='store_true', dest='provision',help='Start provision devices')
-    parser.add_option('-r', '--reset', action='store_true',dest='reset' ,help='Reset all network device to Base Configuration')
-    parser.add_option('-f', '--final', action='store_true',dest='final', help='Reset all network device to Final Configuration')
-    (options, args) = parser.parse_args()
-
-    if options.provision:
-        startProvision()
-    elif options.reset:
-        resetToBase()
-    elif options.final:
-        setToFinal()
+    parser = argparse.ArgumentParser()
+    parser.add_argument('-p', '--provision', action='store_true', dest='provision',help='Start provision devices')
+    parser.add_argument('-r', '--reset', action='store_true',dest='reset' ,help='Reset to Base Configuration')
+    parser.add_argument('-f', '--final', action='store_true',dest='final', help='reset to Final Configuration')
+    return parser
 
 def main():
     if len(sys.argv) != 2:
         print("No parameter or too many parameter given, use 'vpeaas.py -h' to check available parameter")
         sys.exit(1)
-    parse_args(sys.argv[1:])
+
+    parser = parse_args(sys.argv[1:])
+    args = parser.parse_args()
+    if args.provision:
+        startProvision()
+    elif args.reset:
+        resetToBase()
+    elif args.final:
+        setToFinal()
 
 if __name__ == "__main__":
     main()
