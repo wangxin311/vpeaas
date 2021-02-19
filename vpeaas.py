@@ -46,16 +46,7 @@ def startProvision():
     provision(vpe_veos_r6, "config/1.create_vpe_tenant_a_vpe_veos_r6.cfg")
     provision(vpe_vmx_r7, "config/1.create_vpe_tenant_a_vpe_vmx_r7.cfg")
     provision(vpe_vmx_r12, "config/1.create_vpe_tenant_a_vpe_vmx_r12.cfg")
-    input("VPE Provision for TENANT-A is completed, Press ENTER continue to Create Subnets and attach VM for TENANT-A...")
-
-    # Create Subnets for TENANT-A and Create VM in the Subnet
-    print("=" * 128)
-    print('{:^128}'.format('[ Start Provision Subnets and attach VM into subnets for TENANT-A ]'))
-    print("=" * 128)
-    provision(vpe_veos_r1, "config/2.create_subnet_tenant_a_vpe_veos_r1.cfg")
-    provision(vpe_veos_r2, "config/2.create_subnet_tenant_a_vpe_veos_r2.cfg")
-    provision(vpe_veos_r6, "config/2.create_subnet_tenant_a_vpe_veos_r6.cfg")
-    input("Subnets Provision and VM attachment for TENANT-A is completed, Press ENTER continue to Create Peering Gateway for TENANT-A...")
+    # input("VPE Provision for TENANT-A is completed, Press ENTER continue to Create Peering Gateway for TENANT-A...")
 
     # Create Peering Gateway for TENANT-A
     print("=" * 128)
@@ -73,7 +64,16 @@ def startProvision():
     provision(vpe_vmx_r12, "config/3.attach_peering_gateway_tenant_a_vpe_vmx_r12.cfg")
     provision(vpe_vmx_r11, "config/3.attach_peering_gateway_tenant_a_vpe_vmx_r11.cfg")
     provision(vpe_vmx_r17, "config/3.attach_peering_gateway_tenant_a_vpe_vmx_r17.cfg")
-    input("Attach PGW to VPE Router for TENANT-A is completed, Press ENTER continue to Create IGW for TENANT-A Public BM...")
+    input("VPE/Peering GW Creation and attachment are completed, Press ENTER continue to Create Subnets for TENANT-A...")
+
+    # Create Subnets for TENANT-A and Create VM in the Subnet
+    print("=" * 128)
+    print('{:^128}'.format('[ Start Provision Subnets and attach VM onto subnets for TENANT-A ]'))
+    print("=" * 128)
+    provision(vpe_veos_r1, "config/2.create_subnet_tenant_a_vpe_veos_r1.cfg")
+    provision(vpe_veos_r2, "config/2.create_subnet_tenant_a_vpe_veos_r2.cfg")
+    provision(vpe_veos_r6, "config/2.create_subnet_tenant_a_vpe_veos_r6.cfg")
+    input("Subnets Provision and VM attachment for TENANT-A is completed, Press ENTER continue to Create Peering Gateway for TENANT-A...")
 
     # Create IGW and attach to VPE Router for TENANT-A Public BM
     print("=" * 128)
@@ -162,7 +162,8 @@ def startProvision():
     print("=" * 128)
     provision(vpe_veos_r20, "config/10.attach_cloud_gateway_tenant_a_vpe_veos_r20.cfg")
     provision(vpe_vmx_r12, "config/10.attach_cloud_gateway_tenant_a_vpe_vmx_r12.cfg")
-    input("Attach Cloud GW to VPE Router for TENANT-A is completed, Press ENTER exit the script...")
+    print("Attach Cloud GW to VPE Router for TENANT-A is completed, Demo is completed and exit the script...")
+    sys.exit(0)
     # input("Attach Cloud GW to VPE Router for TENANT-A is completed, Press ENTER continue to for TENANT-B...")
 
     # # Create VPE for TENANT-B
@@ -260,7 +261,7 @@ def parse_args(argv):
     parser = argparse.ArgumentParser()
     parser.add_argument('-p', '--provision', action='store_true', dest='provision',help='Start provision devices')
     parser.add_argument('-r', '--reset', action='store_true',dest='reset' ,help='Reset to Base Configuration')
-    parser.add_argument('-f', '--final', action='store_true',dest='final', help='reset to Final Configuration')
+    parser.add_argument('-f', '--final', action='store_true',dest='final', help='Reset to Final Configuration')
     return parser
 
 def main():
