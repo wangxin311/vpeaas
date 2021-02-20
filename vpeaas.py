@@ -6,6 +6,18 @@ from datetime import datetime
 from netmiko import ConnectHandler
 from device import *
 
+def message(start_msg, end_msg):
+    def helper(func):
+        def wrapper():
+            print("=" * 128)
+            print('{:^128}'.format(start_msg))
+            print("=" * 128)
+            func()
+            print("=" * 128)
+            print('{:^128}'.format(end_msg))
+            print("=" * 128)
+        return wrapper
+    return helper
 
 def provision(device, config_file):
     start_time=datetime.now()
@@ -217,11 +229,10 @@ def startProvision():
     # provision(vpe_vmx_r7, "config/8.attach_load_balancer_tenant_b_vpe_vmx_r7.cfg")
     # input("Attach LB to VPE Router for TENANT-B is completed, All Steps are Done! Press ENTER to exit...")
 
+
+@message('[ Start Reset all network devices to BASE Configuration ]', '[ BASE Configuration Reset Done, Ready For Provision ]')
 def resetToBase():
     # Reset to BASE configuration
-    print("=" * 128)
-    print('{:^128}'.format('[ Start Reset all network devices to BASE Configuration ]'))
-    print("=" * 128)
     reset(vpe_veos_r1, "VPEaaS-BASE-vEOS-R1-01182021.cfg")
     reset(vpe_veos_r2, "VPEaaS-BASE-vEOS-R2-01182021.cfg")
     reset(vpe_veos_r6, "VPEaaS-BASE-vEOS-R6-01182021.cfg")
@@ -233,15 +244,10 @@ def resetToBase():
     reset(vpe_vsrx_r8, "VPEaaS-BASE-vSRX-R8-VGW-01182021-NATIVE.cfg")
     reset(vpe_vsrx_r9, "VPEaaS-BASE-vSRX-R9-IGW-NGW-01182021-NATIVE.cfg")
     reset(vpe_vsrx_r10, "VPEaaS-BASE-vSRX-R10-EGW-01182021-NATIVE.cfg")
-    print("=" * 128)
-    print('{:^128}'.format('[ BASE Configuration Reset Done, Ready For Provision ]'))
-    print("=" * 128)
 
+@message('[ Start Reset all network devices to FINAL Configuration ]', '[ FINAL Configurations are pushed, Ready For Verification ]')
 def setToFinal():
     # Reset to FINAL configuration
-    print("=" * 128)
-    print('{:^128}'.format('[ Start Reset all network devices to FINAL Configuration ]'))
-    print("=" * 128)
     reset(vpe_veos_r1, "VPEaaS-FINAL-vEOS-R1-01292021-Symmetric-IRB.cfg")
     reset(vpe_veos_r2, "VPEaaS-FINAL-vEOS-R2-01292021-Symmetric-IRB.cfg")
     reset(vpe_veos_r6, "VPEaaS-FINAL-vEOS-R6-01202021-Symmetric-IRB.cfg")
@@ -253,9 +259,6 @@ def setToFinal():
     reset(vpe_vsrx_r8, "VPEaaS-FINAL-vSRX-R8-VGW-01252021-NATIVE.cfg")
     reset(vpe_vsrx_r9, "VPEaaS-FINAL-vSRX-R9-IGW-NGW-01252021-NATIVE.cfg")
     reset(vpe_vsrx_r10, "VPEaaS-FINAL-vSRX-R10-EGW-01252021-NATIVE.cfg")
-    print("=" * 128)
-    print('{:^128}'.format('[ FINAL Configurations are pushed, Ready For Verification ]'))
-    print("=" * 128)
 
 def parse_args(argv):
     parser = argparse.ArgumentParser()
